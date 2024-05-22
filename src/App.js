@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+// import HomePage from "./components/HomePage";
+import ChatRoom from "./components/ChatRoom";
+// import UserProfile from "./components/UserProfile";
+
 import "./styles.css";
 
-// import { io } from "socket.io-client";
-
-// const socket = io("http://localhost:3001");
-
-const App = () => {
-  const [user, setUser] = useState(null);
-
+function App() {
   return (
-    <div className="App">
-      <h1>Live Chat Application</h1>
-    </div>
+    // <Router>
+    //   <Routes>
+    //     {/* <Route path="/" element={<HomePage />} /> */}
+    //     <Route path="/chat" element={<ChatRoom />} />
+    //     {/* <Route path="/profile" element={<UserProfile />} /> */}
+    //   </Routes>
+    // </Router>
+    <>
+      <ChatRoom />
+    </>
   );
-};
+}
 
 export default App;
