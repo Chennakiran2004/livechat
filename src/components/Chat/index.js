@@ -9,7 +9,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-const Chat = ({ user }) => {
+const Chat = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -26,9 +26,8 @@ const Chat = ({ user }) => {
     if (message.trim() === "") return;
 
     await addDoc(collection(db, "messages"), {
-      message: message,
+      message,
       timestamp: serverTimestamp(),
-      user: user.email,
     });
     setMessage("");
   };
@@ -37,9 +36,7 @@ const Chat = ({ user }) => {
     <div>
       <div>
         {messages.map((msg, index) => (
-          <div key={index}>
-            <strong>{msg.user}</strong>: {msg.message}
-          </div>
+          <div key={index}>{msg.message}</div>
         ))}
       </div>
       <form onSubmit={sendMessage}>
